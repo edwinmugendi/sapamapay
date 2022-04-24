@@ -1,0 +1,19 @@
+{
+    "name": "edwinmugendi/sapamapay",
+    "description": "Sapama Pay API - MPESA, Equitel, Sapama Pay API",
+    "authors": [
+        {
+            "name": "Edwin Mugendi",
+            "email": "edwinmugendi@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=4.0.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Edwinmugendi\\Sapamapay\\": "src/"
+        }
+    }
+}
