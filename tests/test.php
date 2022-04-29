@@ -13,18 +13,16 @@ $configs = array(
     'Verbose' => '',
 );
 
-
-
 $passkey = '';
 $shortcode = '';
-$phone = '';
+$phone = '254722906835';
 $consumer_key = '';
 $consumer_secret = '';
 
 $timestamp = preg_replace('/\D/', '', date('Y-m-d H:i:s'));
 
 
-$api = 'pull_register_url';
+$api = 'pull_transaction_api';
 
 if ($api == 'stkpush') {
     $parameters = array(
@@ -103,14 +101,14 @@ if ($api == 'stkpush') {
 } else if ($api == 'transaction_status_request') {
     $parameters = array(
         'CommandID' => 'TransactionStatusQuery',
-        'PartyA' => '254708374149',
-        'IdentifierType' => '603013',
+        'PartyA' => '830830',
+        'IdentifierType' => '830830',
         'Remarks' => 'remarks',
-        'Initiator' => 'apiop41',
+        'Initiator' => 'SAPAMA',
         'SecurityCredential' => 'TkNZpjhQ',
         'QueueTimeOutURL' => 'https://url',
         'ResultURL' => 'https://url',
-        'TransactionID' => '11211',
+        'TransactionID' => 'QDO9WMW6YD',
         'Occasion' => '12',
     );
 } else if ($api == 'c2b_register_url') {
@@ -136,6 +134,16 @@ if ($api == 'stkpush') {
         'RequestType' => 'Pull',
         'NominatedNumber' => $phone,
         'CallBackURL' => 'https://pullapi',
+    );
+} else if ($api == 'pull_transaction_api') {
+
+    $days_ago = date('Y-m-d H:i:s', strtotime('-1 days', strtotime(date('Y-m-d'))));
+
+    $parameters = array(
+        'ShortCode' => '830830',
+        'StartDate' => $days_ago,
+        'EndDate' => date('Y-m-d H:i:s'),
+        'OffSetValue' => '0',
     );
 } else if ($api == 'generate_token') {
     $parameters = array(
@@ -163,3 +171,4 @@ echo 'JSON response: <p>';
 echo json_encode($response);
 echo '<p>Response var_dump:<p>';
 var_dump($response);
+var_dump($response['Response']['Response']);

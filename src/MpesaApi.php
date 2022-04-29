@@ -42,6 +42,73 @@ class MpesaApi {
                 ),
             )
         ),
+        'pull_transaction_api' => array(
+            'name' => 'Pull Transactions API',
+            'description' => 'Pull Transactions API',
+            'endpoint' => 'pulltransactions/v1/query',
+            'type' => 'post',
+            'group' => 'https://documenter.getpostman.com/view/1724456/SVtTy8sd?version=latest#47d0c48d-5f28-487b-b898-b6522acb9151',
+            'link' => 'https://documenter.getpostman.com/view/1724456/SVtTy8sd?version=latest#47d0c48d-5f28-487b-b898-b6522acb9151',
+            'parameters' => array(
+                'ShortCode' => array(
+                    'name' => 'This is your paybill number/till number, which you expect to receive payments notifications about.',
+                    'required' => true,
+                    'type' => 'Numeric',
+                    'possible_value' => '123456',
+                ),
+                'StartDate' => array(
+                    'name' => 'The start period of the missing transactions in the format of 2019-07-31 20:35:21 / 2019-07-31 19:00',
+                    'required' => true,
+                    'type' => 'String',
+                    'possible_value' => '2020-08-04 8:36:00',
+                ),
+                'EndDate' => array(
+                    'name' => 'The end of the period for the missing transactions in the format of 2019-07-31 20:35:21 / 2019-07-31 22:35',
+                    'required' => true,
+                    'type' => 'String',
+                    'possible_value' => '2020-08-16 10:10:000',
+                ),
+                'OffSetValue' => array(
+                    'name' => 'OffSetValue',
+                    'required' => true,
+                    'type' => 'Numeric',
+                    'possible_value' => '0',
+                ),
+            ),
+            'response' => array(
+                'ResponseRefID' => array(
+                    'name' => 'ResponseRefID',
+                    'type' => 'String',
+                    'sample_value' => '26178-42530161-2',
+                ),
+                'ResponseCode' => array(
+                    'name' => 'ResponseCode',
+                    'type' => 'Numeric',
+                    'sample_value' => 'ResponseCode',
+                ),
+                'ResponseMessage' => array(
+                    'name' => 'ResponseMessage',
+                    'type' => 'String',
+                    'sample_value' => 'Success',
+                ),
+                'Response' => array(
+                    'name' => 'Response',
+                    'type' => 'Array',
+                    'sample_value' => '[
+    [
+      {
+        "transactionId": "yzlyrEsRG1",
+        "trxDate": "2020-08-05T10:13:00Z",
+        "msisdn": 72200000,
+        "sender": "UAT2",
+        "transactiontype": "c2b-pay-bill-debit",
+        "billreference": "37207636392",
+        "amount": "168.00",
+        "organizationname": "Daraja Pull API Test"
+      }]]',
+                ),
+            )
+        ),
         'stkpush' => array(
             'name' => 'Lipa Na M-Pesa Online Payment API',
             'description' => 'API to initiate online payment on behalf of a customer.',
