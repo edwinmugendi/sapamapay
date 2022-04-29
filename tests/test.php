@@ -164,6 +164,7 @@ if ($response['Response']['access_token']) {
     
     $configs['AccessToken'] = $response['Response']['access_token'];
 
+    
     $response = $mpesa_api->call($api, $configs, $parameters);
 }//E# if statement
 
