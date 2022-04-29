@@ -161,6 +161,7 @@ $access_token_parameters = array(
 $response = $mpesa_api->call('generate_token', $configs, $access_token_parameters);
 
 if ($response['Response']['access_token']) {
+    
     $configs['AccessToken'] = $response['Response']['access_token'];
 
     $response = $mpesa_api->call($api, $configs, $parameters);
