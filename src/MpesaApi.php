@@ -699,7 +699,7 @@ class MpesaApi {
         'c2b_register_url' => array(
             'name' => 'C2B Register URL',
             'description' => 'Register validation and confirmation URLs on M-Pesa ',
-            'endpoint' => 'mpesa/c2b/v1/registerurl',
+            'endpoint' => 'mpesa/c2b/v2/registerurl',
             'type' => 'post',
             'group' => 'https://developer.safaricom.co.ke/c2b/apis',
             'link' => 'https://developer.safaricom.co.ke/c2b/apis/post/registerurl',
