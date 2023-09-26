@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/../vendor/autoload.php'; // Autoload files using Composer autoload
 
 use Edwinmugendi\Sapamapay\KcbApi;
@@ -16,22 +15,35 @@ $configs = array(
 $passkey = '';
 $shortcode = '';
 $phone = '254722906835';
-$consumer_key = 'MYgfaVBBpcFiLpKo0xwqxWczizwa';
-$consumer_secret = 'RWJqzZeyNIqca6Q7w72vQKT8fQQa';
+$consumer_key = 'wj7s3TbfJFKBipnM_uE1ium1tA8a';
+$consumer_secret = '9ZElMj4Z6Ym1EVvJkfc3jnIPHyUa';
 
 $timestamp = preg_replace('/\D/', '', date('Y-m-d H:i:s'));
 
 $api = 'stkpush';
 
 if ($api == 'stkpush') {
+    //Sandbox
     $parameters = array(
         'phoneNumber' => '254722906835',
-        'amount' => 9,
+        'amount' => 1,
         'invoiceNumber' => 'INV-1013',
         'sharedShortCode' => true,
         'orgShortCode' => '174379',
         'orgPassKey' => 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919',
         'callbackUrl' => 'https://posthere.io/f613-4b7f-b82b',
+        'transactionDescription' => 'School fees',
+    );
+
+    //KCB One till
+    $parameters = array(
+        'phoneNumber' => '254722906835',
+        'amount' => 1,
+        'invoiceNumber' => '7588377-001',//ONE TILL - Account Number. The whole invoice number should be 15 characters. 
+        'sharedShortCode' => true,
+        'orgShortCode' => '',//Empty
+        'orgPassKey' => '',//Empty
+        'callbackUrl' => 'https://posthere.io/4ff4-4721-b2ed',
         'transactionDescription' => 'School fees',
     );
 } else if ($api == 'stk_query') {
@@ -159,8 +171,8 @@ $access_token_parameters = array(
 
 $response = $kcb_api->call('generate_token', $configs, $access_token_parameters);
 
-//var_dump($response);
-//die("ads");
+var_dump($response);
+
 if ($response['Response']['access_token']) {
     
     $configs['AccessToken'] = $response['Response']['access_token'];
@@ -168,7 +180,11 @@ if ($response['Response']['access_token']) {
     echo $configs['AccessToken'];
 
     $response = $kcb_api->call($api, $configs, $parameters);
+
+    var_dump($response);
 }//E# if statement
+
+
 
 die("asd");
 

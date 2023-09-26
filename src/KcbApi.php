@@ -15,9 +15,11 @@ class KcbApi
     private $response;
     private $environment;
     private $sandbox_endpoint = 'https://uat.buni.kcbgroup.com/mm/api/request/1.0.0/';
-    private $live_endpoint = 'https://uat.buni.kcbgroup.com/mm/api/request/1.0.0/';
-    private $sandbox_token_endpoint = 'https://wso2-api-gateway-direct-kcb-wso2-gateway.apps.test.aro.kcbgroup.com/token';
-    private $live_token_endpoint = 'https://wso2-api-gateway-direct-kcb-wso2-gateway.apps.test.aro.kcbgroup.com/token';
+    private $live_endpoint = 'https://api.buni.kcbgroup.com/mm/api/request/1.0.0/';
+   //private $sandbox_token_endpoint = 'https://wso2-api-gateway-direct-kcb-wso2-gateway.apps.test.aro.kcbgroup.com/token';
+    private $sandbox_token_endpoint = 'https://api.buni.kcbgroup.com/token';
+    //private $live_token_endpoint = 'https://kcb-wso2gw.apps.keprocpp01.kcbgroup.com/token';
+    private $live_token_endpoint = 'https://api.buni.kcbgroup.com/token';
     private $endpoint = '';
     private $parameters = array();
     private $actual_api = array();
@@ -180,7 +182,7 @@ class KcbApi
      */
     public function call($api, $configs, $parameters = array())
     {
-
+        
         $this->parameters = $parameters;
         $this->configs = $configs;
 
@@ -269,7 +271,7 @@ class KcbApi
             } //E# foreach statement
         } //E# if else statement
 
-       // die($this->endpoint);
+       //die($this->endpoint);
 
         $response = $this->curl_request($this->actual_api['type'], $this->endpoint, $parameters, $header);
 
